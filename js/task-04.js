@@ -1,15 +1,18 @@
 let counterValue = 0;
-const counterRef = document.querySelector("#counter");
-const counterValueRef = counterRef.querySelector("#value");
-const btnRef = counterRef.querySelectorAll("[data-action]");
+
+const refs = {
+  counter: document.querySelector("#counter"),
+  counterValue: document.querySelector("#value"),
+  btn: document.querySelectorAll("[data-action]"),
+};
 
 const handleClick = (event) => {
   counterValue +=
     event.currentTarget.getAttribute("data-action") === "increment" ? 1 : -1;
-  counterValueRef.textContent = counterValue;
+  refs.counterValue.textContent = counterValue;
 };
 
-btnRef.forEach((btn) => {
+refs.btn.forEach((btn) => {
   btn.addEventListener("click", handleClick);
 });
 
@@ -30,9 +33,3 @@ btnRef.forEach((btn) => {
 // };
 
 // incrementBtn.addEventListener("click", incrementBtnClickHandler);
-
-// const handleClick = (event) => {
-//   counterValue +=
-//     event.currentTarget.getAttribute("data-action") === "increment" ? 1 : -1;
-//   counterValueRef.textContent = counterValue;
-// };
